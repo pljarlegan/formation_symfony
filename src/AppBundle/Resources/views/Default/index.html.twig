@@ -1,1 +1,11 @@
-Hello World!
+{% extends '@App/base.html.twig' %}
+
+{% block body %}
+    sss
+
+    ---{{ block('title') }}---
+{% endblock %}
+
+{% block title %}
+    plplpldsqqsdqs  + {{ parent() }}
+{% endblock %}
