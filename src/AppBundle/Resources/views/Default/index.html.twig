@@ -1,9 +1,37 @@
 {% extends '@App/base.html.twig' %}
-
+{# @var tracks \AppBundle\Entity\Track[] #}
 {% block body %}
-    sss
+{#
+    <table>
+    {% for artist in artists %}
+        <tr>
+            <td>{{ loop.index%2 }}</td>
+            <td>{{ artist.name }}</td>
+            <td><a href="{{ artist.website }}">{{ artist.website }}</a></td>
+            <td>{{ artist.nationality }}</td>
+            <td>{{ artist.createdAt | date("m/d/Y H:i:s") }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+#}
+    <table>
+        {% for track in tracks %}
+            <tr>
+                <td>{{ loop.index%2 }}</td>
+                <td>{{ track.titre }}</td>
+                <td>
+                    {% if track.artist is not null %}
+                        Artist : {{ track.artist.name }}({{ track.artist.nationality }})
+                    {% else %}
+                        UNKNOW ARTIST
+                    {% endif %}
+                </td>
+                <td>{{ track.genre }}</td>
+                <td>{{ track.releasedAt | date("m/d/Y H:i:s") }}</td>
 
-    ---{{ block('title') }}---
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
 
 {% block title %}

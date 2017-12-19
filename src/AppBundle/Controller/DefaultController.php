@@ -14,15 +14,12 @@ class DefaultController extends Controller
   public function indexAction(Request $request)
   {
 
-    $bob = '123';
-    dump($request);
-    dump($bob);
-    $response =  new Response('moo</body>');
+    //$artistRepository = $this->getDoctrine()->getRepository('AppBundle:Artist');
+    //$artists = $artistRepository->findAll();
+    $tracksRepository = $this->getDoctrine()->getRepository('AppBundle:Track');
+    $tracks = $tracksRepository->findAll();
 
-
-
-    //return $response;
-    return $this->render('@App/Default/index.html.twig');
+    return $this->render('@App/Default/index.html.twig', compact('tracks'));
     //return new RedirectResponse('http://google.fr');
     //return new JsonResponse([
     //  'toto'=>'123',

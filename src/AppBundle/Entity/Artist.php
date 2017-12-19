@@ -49,6 +49,12 @@ class Artist
      */
     private $createdAt;
 
+ // /**
+ //  * @var Track
+ //  *
+ //  * @ORM\OneToMany(targetEntity="Track") invertedBy="artist"
+ //  */
+ //   private $track;
 
     /**
      * Get id
