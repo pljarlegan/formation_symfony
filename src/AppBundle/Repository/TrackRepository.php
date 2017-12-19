@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class TrackRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function loadTrackWithArtists(int $limit = 50)
+    {
+        $qb = $this->createQueryBuilder('track');
+
+        $qb
+          ->leftJoin('track.artist', 'artist')
+          ->select('track', 'artist')
+          ->setMaxResults($limit);
+        return $qb->getQuery()->execute();
+    }
 }

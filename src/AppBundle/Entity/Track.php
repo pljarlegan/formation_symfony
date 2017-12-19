@@ -45,7 +45,7 @@ class Track
   /**
    * @var Artist
    *
-   * @ORM\ManyToOne(targetEntity="Artist")
+   * @ORM\ManyToOne(targetEntity="Artist", inversedBy="tracks")
    */
     private $artist;
 

@@ -17,8 +17,9 @@ class DefaultController extends Controller
     //$artistRepository = $this->getDoctrine()->getRepository('AppBundle:Artist');
     //$artists = $artistRepository->findAll();
     $tracksRepository = $this->getDoctrine()->getRepository('AppBundle:Track');
-    $tracks = $tracksRepository->findAll();
+    //$tracks = $tracksRepository->findAll();
 
+    $tracks = $tracksRepository->loadTrackWithArtists();
     return $this->render('@App/Default/index.html.twig', compact('tracks'));
     //return new RedirectResponse('http://google.fr');
     //return new JsonResponse([
