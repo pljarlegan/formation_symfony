@@ -1,0 +1,17 @@
+{% extends '@App/base.html.twig' %}
+{# @var tracks \AppBundle\Entity\Track[] #}
+{% block body %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-success">Send</button>
+    {{ form_end(form) }}
+
+    {% if data is not empty %} <hr/>
+    {{ dump(data) }}
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    contacts  + {{ parent() }}
+{% endblock %}
