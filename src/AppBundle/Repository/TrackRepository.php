@@ -15,8 +15,8 @@ class TrackRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('track');
 
         $qb
-          ->leftJoin('track.artist', 'artist')
-          ->select('track', 'artist')
+          ->leftJoin('track.artists', 'artists')
+          ->select('track', 'artists')
           ->setMaxResults($limit);
         return $qb->getQuery()->execute();
     }

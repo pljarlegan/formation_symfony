@@ -52,7 +52,7 @@ class Artist
     /**
      * @var Collection|Track[]
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Track", mappedBy="artist")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Track", mappedBy="artists")
      */
       private $tracks;
 

@@ -16,14 +16,17 @@
 #}
 
     <a href="{{ path('app_contacts') }}">contacts</a>
-    <table>
+    <table class="table">
         {% for track in tracks %}
             <tr>
                 <td>{{ loop.index%2 }}</td>
                 <td>{{ track.titre }}</td>
                 <td>
-                    {% if track.artist is not null %}
-                        Artist : {{ track.artist.name }}({{ track.artist.nationality }})
+                    {% if track.artists is not empty %}
+                        Artist : <br/>
+                        {% for artist in track.artists %}
+                            - {{ artist.name }} ({{ artist.nationality }}) : {{ artist.tracks.count }} titre(s) {% if not loop.last %}<br/>{% endif %}
+                        {% endfor %}
                     {% else %}
                         UNKNOW ARTIST
                     {% endif %}

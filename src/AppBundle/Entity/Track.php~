@@ -43,11 +43,11 @@ class Track
     private $genre;
 
   /**
-   * @var Artist
+   * @var Collection|Artist[]
    *
-   * @ORM\ManyToOne(targetEntity="Artist")
+   * @ORM\ManyToMany(targetEntity="Artist", inversedBy="tracks")
    */
-    private $artist;
+    private $artists;
 
     /**
      * Get id
@@ -130,5 +130,5 @@ class Track
     {
         return $this->genre;
     }
-}
 
+}

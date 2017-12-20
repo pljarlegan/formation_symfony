@@ -43,11 +43,11 @@ class Track
     private $genre;
 
   /**
-   * @var Artist
+   * @var Collection|Artist[]
    *
-   * @ORM\ManyToOne(targetEntity="Artist", inversedBy="tracks")
+   * @ORM\ManyToMany(targetEntity="Artist", inversedBy="tracks")
    */
-    private $artist;
+    private $artists;
 
     /**
      * Get id
@@ -132,26 +132,44 @@ class Track
     }
 
     /**
-     * Set artist
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artists = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add artist
      *
      * @param \AppBundle\Entity\Artist $artist
      *
      * @return Track
      */
-    public function setArtist(\AppBundle\Entity\Artist $artist = null)
+    public function addArtist(\AppBundle\Entity\Artist $artist)
     {
-        $this->artist = $artist;
+        $this->artists[] = $artist;
 
         return $this;
     }
 
     /**
-     * Get artist
+     * Remove artist
      *
-     * @return \AppBundle\Entity\Artist
+     * @param \AppBundle\Entity\Artist $artist
      */
-    public function getArtist()
+    public function removeArtist(\AppBundle\Entity\Artist $artist)
     {
-        return $this->artist;
+        $this->artists->removeElement($artist);
+    }
+
+    /**
+     * Get artists
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtists()
+    {
+        return $this->artists;
     }
 }
